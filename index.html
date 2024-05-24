@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>360 Image Viewer</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+        #panorama {
+            height: 100vh;
+            width: 100%;
+            z-index: 0;
+        }
+        #jmrlay {
+            user-select: none;
+            background-color: aliceblue;
+            padding: 10px 20px;
+            left: 50%;
+            border-radius: 5px;
+            box-shadow: 0 0 100px 1px rgb(221, 221, 221);
+            font-size: 30px;
+            top: 10%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div id="jmrlay">Ah Jmr Lay</div>
+    <div id="panorama"></div>
+
+    <script>
+        // Adding a check to ensure Pannellum library is loaded
+        if (typeof pannellum !== 'undefined') {
+            console.log("Pannellum is loaded.");
+            pannellum.viewer('panorama', {
+                "type": "equirectangular",
+                "panorama": "360image2.jpg", // Ensure this path is correct
+                "autoLoad": true // Ensure the image auto-loads
+            });
+        } else {
+            console.error("Pannellum is not loaded. Check the script inclusion.");
+        }
+    </script>
+</body>
+</html>
